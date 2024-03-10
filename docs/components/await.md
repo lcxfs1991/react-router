@@ -1,11 +1,11 @@
 ---
-title: Await
+标题：Await
 new: true
 ---
 
 ## `<Await>`
 
-Used to render [deferred][defer] values with automatic error handling. Make sure to review the [Deferred Data Guide][deferred guide] since there are a few APIs that work together with this component.
+用于渲染带有自动错误处理功能的[deferred][defer]值。请务必查看[Deferred Data Guide][deferred guide]，因为有几个API与该组件协同工作。
 
 ```jsx lines=[1,10-18]
 import { Await, useLoaderData } from "react-router-dom";
@@ -20,7 +20,7 @@ function Book() {
         <Await
           resolve={reviews}
           errorElement={
-            <div>Could not load reviews 😬</div>
+            <div>无法加载评论 😬</div>
           }
           children={(resolvedReviews) => (
             <Reviews items={resolvedReviews} />
@@ -32,9 +32,9 @@ function Book() {
 }
 ```
 
-**Note:** `<Await>` expects to be rendered inside of a `<React.Suspense>` or `<React.SuspenseList>` parent to enable the fallback UI.
+**注意：** `<Await>`期望在`<React.Suspense>`或`<React.SuspenseList>`父元素中进行渲染，以启用备选UI。
 
-## Type declaration
+## 类型声明
 
 ```tsx
 declare function Await(
@@ -54,9 +54,9 @@ interface AwaitResolveRenderFunction {
 
 ## `children`
 
-Can either be React elements or a function.
+可以是React元素或函数。
 
-When using a function, the value is provided as the only parameter.
+当使用函数时，值将作为唯一参数提供。
 
 ```tsx [2]
 <Await resolve={reviewsPromise}>
@@ -64,7 +64,7 @@ When using a function, the value is provided as the only parameter.
 </Await>
 ```
 
-When using React elements, [`useAsyncValue`][useasyncvalue] will provide the data:
+当使用React元素时，将通过[`useAsyncValue`][useasyncvalue]提供数据：
 
 ```tsx [2]
 <Await resolve={reviewsPromise}>
@@ -79,9 +79,9 @@ function Reviews() {
 
 ## `errorElement`
 
-The error element renders instead of the children when the promise rejects. You can access the error with [`useAsyncError`][useasyncerror].
+当promise被拒绝时，错误元素会代替children进行渲染。你可以通过[`useAsyncError`][useasyncerror]访问错误信息。
 
-If the promise rejects, you can provide an optional `errorElement` to handle that error in a contextual UI via the `useAsyncError` hook.
+如果promise被拒绝，你可以提供一个可选的`errorElement`，通过`useAsyncError`钩子在上下文中显示错误信息。
 
 ```tsx [3,9]
 <Await
@@ -97,11 +97,11 @@ function ReviewsError() {
 }
 ```
 
-If you do not provide an errorElement, the rejected value will bubble up to the nearest route-level [`errorElement`][routeerrorelement] and be accessible via the [`useRouteError`][userouteerror] hook.
+如果不提供`errorElement`，拒绝的值将会冒泡到最近的路由级[`errorElement`][routeerrorelement]，并可通过[`useRouteError`][userouteerror]钩子访问。
 
 ## `resolve`
 
-Takes a promise returned from a [deferred][defer] [loader][loader] value to be resolved and rendered.
+接收从[deferred][defer] [loader][loader]返回的承诺，以便解决并渲染。
 
 ```jsx [12,15,24,32-33]
 import {
@@ -111,14 +111,14 @@ import {
   Await,
 } from "react-router-dom";
 
-// given this route
+// 假设有这样一个路由
 <Route
   loader={async () => {
     let book = await getBook();
-    let reviews = getReviews(); // not awaited
+    let reviews = getReviews(); // 不等待其完成
     return defer({
       book,
-      reviews, // this is a promise
+      reviews, // 这是一个promise
     });
   }}
   element={<Book />}
@@ -127,7 +127,7 @@ import {
 function Book() {
   const {
     book,
-    reviews, // this is the same promise
+    reviews, // 这是同一个promise
   } = useLoaderData();
   return (
     <div>
@@ -135,7 +135,7 @@ function Book() {
       <p>{book.description}</p>
       <React.Suspense fallback={<ReviewsSkeleton />}>
         <Await
-          // and is the promise we pass to Await
+          // 并将其传递给Await
           resolve={reviews}
         >
           <Reviews />

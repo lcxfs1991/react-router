@@ -1,7 +1,8 @@
 ---
-title: Docs Home
+title: 文档首页
 toc: false
 order: 1
+slug: /
 ---
 
 # 欢迎使用React路由器
@@ -35,5 +36,5 @@ order: 1
 
 ## 以前的版本
 
-- [React Router v4/5文档](https:// v5.reactrouter.com)
+- [React Router v4/5文档](https://react-router.docschina.org)
 - [React Router v3文档](https://github.com/remix-run/react-router/tree/v3.2.6/docs)
