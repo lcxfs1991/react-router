@@ -1,106 +1,105 @@
 ---
-title: Markdown 元素
+title: Markdown Elements
 hidden: true
-order: 2
 ---
 
-# Markdown 元素
+# Markdown Elements
 
-这是为了测试所有可能存在的不同类型的 markdown 而创建的。每当我发现存在样式边缘情况时，我都会将其添加到此文档中。这是我对需要在不同上下文中进行样式化的各种元素的视觉回归形式。
+This is for testing all the different kinds of markdown that can exist. Whenever I find a styling edge case that exists, I add it to this document. It’s my form of visual regression for all the different kinds of elements that need to be styled across different contexts.
 
-## 标题
+## Headings
 
-4、5 和 6 大小的标题都被同等对待。如果我们开始编写需要这些标题的散文，我们应该重新评估我们的生活。
+Headings at sizes 4, 5, and 6 are all treated equally. If we start writing prose that needs those headings, we should re-evaluate our lives.
 
-# 一级标题
+# Heading 1
 
-## 二级标题
+## Heading 2
 
-### 三级标题
+### Heading 3
 
-#### 四级标题
+#### Heading 4
 
-##### 五级标题
+##### Heading 5
 
-###### 六级标题
+###### Heading 6
 
-## 表格
+## Tables
 
-| 语法   | 描述       |
-| ------ | ---------- |
-| 第一行 | 第二列     |
-| 第二行 | 第二列     |
-| 第三行 | 第二列     |
+| Syntax | Description |
+| ------ | ----------- |
+| Row 1  | Column 2    |
+| Row 2  | Column 2    |
+| Row 3  | Column 2    |
 
 ## Callouts
 
-Callouts 可以与 `<docs-*>` 元素一起使用。它们专门用于引起文档正常流程之外的信息的特别关注。
+Callouts can be used with the `<docs-*>` elements. They are specifically for calling special attention to pieces of information outside the normal flow of the document.
 
-这些元素有三种支持的变体：
+There are three supported variations of these elements:
 
-1. `<docs-info>` - 用于一般信息的 callout。
-2. `<docs-warning>` - 用于警告读者应该知道的事情。
-3. `<docs-error>` - 用于告诉用户他们不应该做某事。
+1. `<docs-info>` - For general callouts to bits of information.
+2. `<docs-warning>` - For warning the read about something they should know.
+3. `<docs-error>` - For telling the user they shouldn’t be doing something.
 
-示例：
+Examples:
 
-<docs-info>`<Link to>` 在当前 URL 以 `/` 结尾时与普通的 `<a href>` 行为不同。`<Link to>` 忽略尾部斜杠，并对每个 `..` 删除一个 URL 段。但当当前 URL 以 `/` 结尾时，`<a href>` 值对 `..` 的处理与其不以 `/` 结尾时不同。</docs-info>
+<docs-info>`<Link to>` with a `..` behaves differently from a normal `<a href>` when the current URL ends with `/`. `<Link to>` ignores the trailing slash, and removes one URL segment for each `..`. But an `<a href>` value handles `..` differently when the current URL ends with `/` vs when it does not.</docs-info>
 
-<docs-warning>`useMatches` 仅适用于数据路由器，如 [`createBrowserRouter`][createbrowserrouter]，因为它们在开始时就知道完整的路由树，并且可以提供所有当前匹配项。此外，`useMatches` 不会匹配任何后代路由树，因为路由器不知道后代路由。</docs-warning>
+<docs-warning>`useMatches` only works with a data router like [`createBrowserRouter`][createbrowserrouter], since they know the full route tree up front and can provide all of the current matches. Additionally, `useMatches` will not match down into any descendant route trees since the router isn't aware of the descendant routes.</docs-warning>
 
-<docs-error>不要这样做</docs-error>
+<docs-error>Do not do this</docs-error>
 
-<docs-info>这个标记有点丑陋，因为（目前）这些都必须在没有任何换行符的情况下位于 `<docs-*>` 元素内 _但_ 在这些内部可能有一个图像。 <img src="https://picsum.photos/480/270" width="480" height="270" /></docs-info>
+<docs-info>The markup for this is kind of ugly, because (currently) these all have to be inside the `<docs-*>` element without any line breaks _but_ it is possible there could be an image inside these. <img src="https://picsum.photos/480/270" width="480" height="270" /></docs-info>
 
-注意：也许这些的语义并不完全正确。在文档的情况下可能有其他名词是有意义的，比如：
+Note: maybe the semantics for these aren't quite right. There might be other nouns that make sense in the case of docs, like:
 
-- `<docs-info>` 可以变成 `<docs-tip>`
-- `<docs-warning>` 可以变成 `<docs-important>`
-- `<docs-error>` 可以变成 `<docs-warning>` 或 `<docs-danger>`
+- `<docs-info>` could become `<docs-tip>`
+- `<docs-warning>` could become `<docs-important>`
+- `<docs-error>` could become `<docs-warning>` or `<docs-danger>`
 
-## 块引用
+## Blockquotes
 
-这是一个带有多行和样式的 `<blockquote>`：
+This is a `<blockquote>` with multiple lines and styles in it:
 
-> 这是我的引用。
+> This is my quote.
 >
-> 它可以有 [链接]($link)，**粗体文本**，_斜体文本_，甚至 `<code>`，所有这些都应该被考虑到。哦，别忘了列表：
+> It can have [links]($link), **bold text**, _italic text_, and even `<code>`, all of which should be accounted for. Oh, and don't forget lists:
 >
-> - 列表项 1
-> - 列表项 2
-> - 列表项 3
+> - List item 1
+> - List item 2
+> - List item 3
 >
-> 无序的，或有序的：
+> Unordered, or ordered:
 >
-> 1. 列表项
-> 2. 另一个列表项
-> 3. 还有一个列表项
+> 1. List item
+> 2. Another list item
+> 3. Yet another list item
 
-## 列表
+## Lists
 
-这是一个链接列表，其中一些是代码：
+This is a list of links, some of which are code:
 
-- 这是我的第一个列表项
-- [这是我的第二个列表项，是一个链接][$link]
-- 这是我的第三个项，带有 `<code>` 和 [`<LinkedCode>` 与文本混合][$link]
+- This is my first list item
+- [This is my second list item that’s a link][$link]
+- This is my third item that has `<code>` and [`<LinkedCode>` mixed with text][$link]
 
-别忘了对于没有 `href` 的 `<a>` 标签也要进行适当的样式设置：<a>就像这个链接</a>。
+And don't forget about proper styling for `<a>` tags that don’t have an `href`: <a>like this link right here</a>.
 
-然后是 `<dl>` 列表：
+And then there’s the `<dl>` lists:
 
 <dl>
   <dt>React</dt>
-  <dd>对某事作出反应或以某种方式行事</dd>
+  <dd>Respond or behave in a particular way in response to something</dd>
   <dt>Router</dt>
-  <dd>将数据包转发到计算机网络的适当部分的设备。</dd>
+  <dd>A device that forwards data packets to the appropriate parts of a computer network.</dd>
   <dt>Library</dt>
-  <dd>一个包含书籍、期刊，有时还有电影和录制音乐集合的建筑物或房间，供人们阅读、借阅或参考。</dd>
-  <dd>一组通常可用的程序和软件包，通常加载并存储在磁盘上以供立即使用。</dd>
+  <dd>A building or room containing collections of books, periodicals, and sometimes films and recorded music for people to read, borrow, or refer to.</dd>
+  <dd>A collection of programs and software packages made generally available, often loaded and stored on disk for immediate use.</dd>
 </dl>
 
-## 代码
+## Code
 
-普通代码：
+Normal code:
 
 ```tsx
 <WhateverRouter initialEntries={["/events/123"]}>
@@ -114,7 +113,7 @@ Callouts 可以与 `<docs-*>` 元素一起使用。它们专门用于引起文�
 </WhateverRouter>
 ```
 
-带有多个高亮行：
+With multiple highlighted lines:
 
 ```tsx lines=[1-2,5]
 <WhateverRouter initialEntries={["/events/123"]}>
@@ -128,7 +127,7 @@ Callouts 可以与 `<docs-*>` 元素一起使用。它们专门用于引起文�
 </WhateverRouter>
 ```
 
-带有文件名：
+With a filename:
 
 ```tsx filename=src/main.jsx
 <WhateverRouter initialEntries={["/events/123"]}>
@@ -142,7 +141,7 @@ Callouts 可以与 `<docs-*>` 元素一起使用。它们专门用于引起文�
 </WhateverRouter>
 ```
 
-错误代码：
+Bad code:
 
 ```tsx bad
 <WhateverRouter initialEntries={["/events/123"]}>
@@ -156,7 +155,7 @@ Callouts 可以与 `<docs-*>` 元素一起使用。它们专门用于引起文�
 </WhateverRouter>
 ```
 
-带有高亮行和文件名的错误代码：
+Bad code with highlighted lines and a filename:
 
 ```tsx filename=src/main.jsx bad lines=[2-5]
 <WhateverRouter initialEntries={["/events/123"]}>
@@ -172,10 +171,10 @@ Callouts 可以与 `<docs-*>` 元素一起使用。它们专门用于引起文�
 </WhateverRouter>
 ```
 
-溢出的行：
+Lines that overflow:
 
 ```html
-<!-- 应用程序的其他 HTML 代码放在这里 -->
+<!-- Other HTML for your app goes here -->
 <!-- prettier-ignore -->
 <script src="https://unpkg.com/react@>=16.8/umd/react.development.js" crossorigin></script>
 ```
@@ -184,4 +183,3 @@ Callouts 可以与 `<docs-*>` 元素一起使用。它们专门用于引起文�
 
 [$link]: https://www.youtube.com/watch?v=dQw4w9WgXcQ
 [createbrowserrouter]: ./routers/create-browser-router
-```
